@@ -37,31 +37,104 @@ footer {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
+  background-color: rgba(2, 89, 16, 1);
   z-index: 1000;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
+  padding: 0 50px;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Maksimal lebar konten */
+  margin: 0 auto; /* Pusatkan konten */
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo-img {
+  width: 50px;
+  height: auto;
 }
 
 .nav-container {
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  gap: 20px;
 }
 
 .nav-link {
   color: white;
-  padding: 10px 20px;
+  padding: 20px 10px;
   font-size: 16px;
+  position: relative;
   transition: background-color 0.3s ease;
 }
 
-.nav-link:hover {
-  background-color: #575757;
-  border-radius: 5px;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  left: 50%; /* Mulai dari tengah */
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
-/* Add margin to prevent overlap with fixed navbar */
-header, section {
+.nav-link:hover::after {
+  width: 100%; /* Garis melebar ke seluruh link */
+}
+
+
+/*header*/
+header {
+  background-image: url("../asset/background/background1.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section {
   margin-top: 70px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #025910;
+  margin-bottom: 20px;
+}
+
+section p {
+  color: #333;
+  font-size: 1rem;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
 }
