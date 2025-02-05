@@ -182,7 +182,6 @@ header p {
 }
 
 /* Styling product */
-/* Styling Section */
 #products {
     background-color: #b8c8b8;
     padding: 40px;
@@ -227,6 +226,11 @@ header p {
     border-radius: 10px;
     background: #ddd;
     margin: 0 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
 }
 
 /* Navigation Buttons */
@@ -249,7 +253,90 @@ header p {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Styling News */
+#news {
+  background-color: #b8c8b8;
+  padding: 40px;
+  text-align: center;
+}
 
+#news h2 {
+  color: #8b4f21;
+  margin-bottom: 20px;
+}
+
+.underline1 {
+  align-items: center;
+  width: 1000px;
+  height: 3px;
+  background-color: black;
+  /* margin: 10px 0; */
+  border: none;
+}
+
+/* Carousel Container */
+.carousel-container1 {
+  position: relative;
+  width: 65%;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper untuk Menyembunyikan Overflow */
+.carousel-wrapper1 {
+  width: 100%;
+  max-width: 1000px; /* Maksimal lebar */
+  overflow: hidden;
+}
+
+/* Carousel Styling */
+.carousel1 {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: calc(200px * 6); /* Menyesuaikan jumlah gambar */
+}
+
+/* Gambar */
+.carousel1 img {
+  width: 200px; /* Lebar gambar */
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ddd;
+  margin: 0 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel1 img:hover {
+transform: scale(1.05);
+}
+
+.image-box{
+  
+}
+
+/* Navigation Buttons */
+.prev-btn, .next-btn {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.prev-btn { left: 5px; }
+.next-btn { right: 5px; }
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
 
 
@@ -276,4 +363,15 @@ footer {
   padding: 10px;
   background-color: #333;
   color: white;
+}
+
+
+@media (max-width: 768px) {
+  .nav-container {
+      flex-direction: column;
+      gap: 10px;
+  }
+  .nav-link {
+      padding: 10px;
+  }
 }
