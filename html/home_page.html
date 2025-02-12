@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PT Cakra Guna Cipta</title>
+    <link rel="icon" href="/asset/favicon2/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/design.css">
 </head>
 <body>
@@ -14,10 +16,13 @@
                 <img src="../asset/logo/logo.webp" alt="Company Logo" class="logo-img" />
             </div>
             <div class="nav-container">
-            <a href="#about" class="nav-link">Tentang Kami</a>
-            <a href="#products" class="nav-link">Produksi</a>
-            <a href="#berita" class="nav-link">Berita & Kegiatan</a>
-            <a href="#contact" class="nav-link">Kontak</a>
+                <a href="#about" class="nav-link">Tentang Kami</a>
+                <a href="#products" class="nav-link">Produksi</a>
+                <a href="#berita" class="nav-link">Berita & Kegiatan</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+            </div>
+            <div class="menu-bar">
+                <i class="fa-solid fa-bars"></i>
             </div>
         </div>
     </nav>
@@ -70,36 +75,92 @@
 
     <section id="news">
         <hr class="underline1">
-        <h2>News & Event</h2>
-        <button class="prev-btn">&#10094;</button>
-        <div class="carousel-container1">
-            <div class="carausel-wrapper1">
-                <div class="carousel1">
-                    <div class="image-box">
-                        <img src="image1.jpg" alt="Product 1">
-                        <p>Event 1</p>
+        <h2 class="news-title">NEWS & EVENT</h2>
+        <div class="news-container">
+            <div class="carousel">
+                <!-- Berita 1 -->
+                <div class="news-slide active">
+                    <div class="news-content">
+                        <div class="hero-image">
+                            <div class="image-placeholder">Gambar 1</div>
+                        </div>
+                        <div class="news-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra...</p>
+                        </div>
                     </div>
-                    <div class="image-box">
-                        <img src="image12.jpg" alt="Product 2">
-                        <p>Event 1</p>
+                </div>
+                <!-- Berita 2 -->
+                <div class="news-slide">
+                    <div class="news-content">
+                        <div class="hero-image">
+                            <div class="image-placeholder">Gambar 2</div>
+                        </div>
+                        <div class="news-text">
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada...</p>
+                        </div>
                     </div>
-                    <div class="image-box">
-                        <img src="image3.jpg" alt="Product 3">
-                        <p>Event 1</p>
+                </div>
+                <!-- Berita 3 -->
+                <div class="news-slide">
+                    <div class="news-content">
+                        <div class="hero-image">
+                            <div class="image-placeholder">Gambar 3</div>
+                        </div>
+                        <div class="news-text">
+                            <p>Quisque vehicula, libero nec fermentum aliquam, purus magna tincidunt...</p>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="next-btn">&#10095;</button>
+
+        <!-- Dot Navigation -->
+        <div class="carousel-nav">
+            <span class="dot active" onclick="moveToSlide(0)"></span>
+            <span class="dot" onclick="moveToSlide(1)"></span>
+            <span class="dot" onclick="moveToSlide(2)"></span>
+            <button class="more-btn">Selengkapnya →</button>
+        </div>
         <hr class="underline1">
     </section>
 
-    <section id="contact">
-        <h2>Hubungi Kami</h2>
-        <p>Email: info@cakragunacipta.com</p>
-        <p>Telepon: (021) 123-4567</p>
+    <section class="contact">
+        <!-- Bagian Tengah Atas -->
+        <div class="contact-header">
+            <h2>ABOUT COMPANY</h2>
+            <p class="company-name">PT CAKRA GUNA CIPTA</p>
+            <h2>CONTACT US</h2>
+        </div>
+    
+        <div class="contact-container">
+            <!-- Bagian Kiri: Informasi Kontak -->
+            <div class="contact-info">
+                <div class="contact-icons">
+                    <a href="https://maps.app.goo.gl/kzV1LrDrmf8DzS1Q6" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> Lokasi
+                    </a>
+                    <a href="mailto:info@cakragunacipta.com">
+                        <i class="fa-regular fa-envelope"></i> Email: info@cakragunacipta.com
+                    </a>
+                    <a href="tel:+62211234567">
+                        <i class="fa-solid fa-phone"></i> Telepon: (021) 123-4567
+                    </a>
+                    <a href="https://wa.me/6281234567890" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp: +62 812-3456-7890
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Garis Pemisah -->
+            <div class="divider"></div>
+            <!-- Bagian Kanan: Peta -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1975.29070631372!2d112.6263354!3d-8.0420175!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd627821537837b%3A0xdf988a3fc8bed275!2sPT.%20Cakra%20Guna%20Cipta!5e0!3m2!1sen!2sid!4v1739271375441!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
     </section>
-
+    
     <footer>
         <p>&copy; 2025 PT Cakra Guna Cipta. Semua Hak Dilindungi.</p>
     </footer>

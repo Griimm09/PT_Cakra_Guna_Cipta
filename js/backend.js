@@ -53,3 +53,78 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startAutoSlide();
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".news-slide");
+    const dots = document.querySelectorAll(".dot");
+    let currentIndex = 0;
+    let interval;
+    let isDragging = false;
+    let startX;
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+        });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+        currentIndex = index;
+    }
+    
+    function nextSlide() {
+        let nextIndex = (currentIndex + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+    
+    function startAutoSlide() {
+        interval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(interval);
+    }
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", function () {
+            stopAutoSlide();
+            showSlide(index);
+            startAutoSlide();
+        });
+    });
+    
+    const carousel = document.querySelector(".carousel");
+    
+    carousel.addEventListener("mousedown", function (e) {
+        isDragging = true;
+        startX = e.clientX;
+        stopAutoSlide();
+    });
+    
+    carousel.addEventListener("mousemove", function (e) {
+        if (!isDragging) return;
+        let diff = e.clientX - startX;
+        if (diff > 50) {
+            showSlide((currentIndex - 1 + slides.length) % slides.length);
+            isDragging = false;
+            startAutoSlide();
+        } else if (diff < -50) {
+            showSlide((currentIndex + 1) % slides.length);
+            isDragging = false;
+            startAutoSlide();
+        }
+    });
+    
+    carousel.addEventListener("mouseup", function () {
+        isDragging = false;
+    });
+    
+    carousel.addEventListener("mouseleave", function () {
+        isDragging = false;
+    });
+    
+    showSlide(currentIndex);
+    startAutoSlide();
+});
+
