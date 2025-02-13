@@ -476,7 +476,7 @@ header p {
 }
 
 .contact-icons a:hover {
-  color: #f0a500;
+  color: #025910;
 }
 
 .contact-icons i {
@@ -505,11 +505,6 @@ iframe {
   border: none;
   border-radius: 8px;
 }
-
-
-
-
-
 
 section {
   margin-top: 70px;
@@ -551,7 +546,7 @@ footer {
   }
 
   .contact{
-    padding: 0 50px 0 50px;
+    padding: 0 50px 50px 50px;
   }
 }
 
@@ -570,6 +565,19 @@ footer {
 }
 
 @media (max-width: 768px) {
+  header h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 0.8rem;
+    max-width: 700px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
   .nav-container {
       flex-direction: column;
       gap: 10px;
@@ -579,6 +587,6 @@ footer {
   }
 
   .contact{
-    padding: 0 0 0 0;
+    padding: 0 20px 50px 20px;
   }
 }
