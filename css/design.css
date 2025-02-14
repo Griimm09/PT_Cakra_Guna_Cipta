@@ -62,12 +62,29 @@ body {
   display: none;
 }
 
+.nav-container2 {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: rgba(2, 89, 16, 0.95);
+  padding-top: 60px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-container2.active {
+  transform: translateX(-250px);
+}
+
 .nav-link {
   color: white;
   padding: 20px 10px;
   font-size: 16px;
   position: relative;
   transition: background-color 0.3s ease;
+  display: block;
+  text-decoration: none;
 }
 
 .nav-link::after {
@@ -567,18 +584,14 @@ footer {
 
 @media (max-width: 1080px) {
   .nav-container {
-      flex-direction: column;
-      gap: 10px;
       display: none;
   }
   .nav-link {
       padding: 10px;
   }
   .menu-bar{
-    display: contents;
-    color: #fff;
+    display: block;
   }
-
   .contact{
     padding: 0 50px 50px 50px;
   }

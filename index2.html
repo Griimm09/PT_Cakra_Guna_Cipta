@@ -1,0 +1,108 @@
+<!-- HTML dengan Navbar Responsif (Semua dalam satu file) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #025910;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      width: 50px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu-bar {
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(2, 89, 16, 0.95);
+      padding-top: 60px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-container.active {
+      transform: translateX(-250px);
+    }
+
+    .nav-link {
+      color: white;
+      padding: 15px;
+      display: block;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1080px) {
+      .nav-buttons {
+        display: none;
+      }
+      .menu-bar {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="logo">
+      <img src="./asset/logo/logo.webp" alt="Logo">
+    </div>
+    <div class="nav-buttons">
+      <a href="#welcome" class="nav-link">Tentang Kami</a>
+      <a href="#products" class="nav-link">Produksi</a>
+      <a href="#news" class="nav-link">Berita</a>
+      <a href="#contact" class="nav-link">Kontak</a>
+    </div>
+    <div class="menu-bar">☰</div>
+  </nav>
+
+  <div class="nav-container">
+    <a href="#welcome" class="nav-link">Tentang Kami</a>
+    <a href="#products" class="nav-link">Produksi</a>
+    <a href="#news" class="nav-link">Berita</a>
+    <a href="#contact" class="nav-link">Kontak</a>
+  </div>
+
+  <script>
+    const menuBar = document.querySelector('.menu-bar');
+    const navContainer = document.querySelector('.nav-container');
+    menuBar.addEventListener('click', () => {
+      navContainer.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
