@@ -102,10 +102,40 @@ header {
   position: relative;
 }
 
+.header-container{
+  background-color: rgba(105, 105, 105, 0.6);
+  padding: 150px 130px 150px 130px;
+  border-radius: 5%;
+}
+
 header h1 {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #fff;
+}
+
+header h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.visi-misi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Pusatkan teks "visi" dan "misi" */
+  text-align: center; /* Pastikan judul rata tengah */
+}
+
+.visi-misi-container p {
+  margin: 0;
+}
+
+.isi {
+  text-align: left; /* Isi tetap rata kiri */
+  max-width: 600px; /* Batasi lebar agar rapi */
 }
 
 header::after {
@@ -163,7 +193,7 @@ header p {
   line-height: 1.6;
 }
 
-.image-container {
+.name-container {
   padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
@@ -171,7 +201,7 @@ header p {
   justify-items: center; /* Pusatkan gambar */
 }
 
-.image-box {
+.box-name {
   width: 150px;
   height: 200px;
   background-color: lightgray;
@@ -180,11 +210,15 @@ header p {
   justify-content: center;
   font-size: 1rem;
   color: black;
+  text-align: center;
+  line-height: 1.5;
+  /* font-weight: bold; */
+  border-radius: 5%;
 }
 
 /* Menurunkan Gambar1 dan Gambar3 */
-.image-box:first-child, 
-.image-box:last-child {
+.box-name:first-child, 
+.box-name:last-child {
   margin-top: 40px; /* Atur jarak ke bawah */
 }
 
@@ -558,9 +592,51 @@ footer {
   .nav-link {
       padding: 10px;
   }
-
+  .header-container{
+    padding: 30px 30px 30px 30px;
+  }
+  header h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  header h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  header p {
+    font-size: 0.8rem;
+    max-width: 700px;
+    margin: 0 auto;
+    z-index: 1;
+  }
   .contact{
     padding: 0 50px 0 50px;
+  }
+  .underline {
+    width: 300px;
+    height: 3px;
+    background-color: black;
+    margin: 10px 0;
+    border: none;
+  }
+  .image-container {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
+    gap: 5px;
+    justify-items: center; /* Pusatkan gambar */
+  }
+  .box-name {
+    width: 100px;
+    height: 50px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: black;
   }
 }
 
