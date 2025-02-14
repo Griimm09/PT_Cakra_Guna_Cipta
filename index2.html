@@ -6,45 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Navbar</title>
   <style>
+/* Reset default */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
+    /* Navbar Styling */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(2, 89, 16, 1);
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      padding: 0 50px;
     }
 
-    #navbar {
+    .nav-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      background-color: #025910;
-      color: white;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .logo img {
+    .logo-img {
       width: 50px;
+      height: auto;
     }
 
-    .nav-buttons {
+    .nav-container {
       display: flex;
-      gap: 15px;
+      justify-content: center;
+      gap: 20px;
     }
 
     .menu-bar {
-      font-size: 24px;
+      color: white;
+      font-size: 20px;
       cursor: pointer;
       display: none;
     }
 
-    .nav-container {
+    /* Menu Sidebar */
+    .nav-container2 {
       position: fixed;
       top: 0;
       right: -250px;
@@ -55,23 +64,30 @@
       transition: transform 0.3s ease-in-out;
     }
 
-    .nav-container.active {
+    .nav-container2.active {
       transform: translateX(-250px);
     }
 
     .nav-link {
       color: white;
-      padding: 15px;
+      padding: 20px 10px;
+      font-size: 16px;
+      position: relative;
+      transition: background-color 0.3s ease;
       display: block;
       text-decoration: none;
     }
 
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
     @media (max-width: 1080px) {
-      .nav-buttons {
-        display: none;
+      .nav-container {
+          display: none;
       }
       .menu-bar {
-        display: block;
+          display: block;
       }
     }
   </style>
@@ -81,7 +97,7 @@
     <div class="logo">
       <img src="./asset/logo/logo.webp" alt="Logo">
     </div>
-    <div class="nav-buttons">
+    <div class="nav-container">
       <a href="#welcome" class="nav-link">Tentang Kami</a>
       <a href="#products" class="nav-link">Produksi</a>
       <a href="#news" class="nav-link">Berita</a>
@@ -90,7 +106,7 @@
     <div class="menu-bar">☰</div>
   </nav>
 
-  <div class="nav-container">
+  <div class="nav-container2">
     <a href="#welcome" class="nav-link">Tentang Kami</a>
     <a href="#products" class="nav-link">Produksi</a>
     <a href="#news" class="nav-link">Berita</a>

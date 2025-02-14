@@ -2,6 +2,19 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --one-color: rgba(2, 89, 16, 1);
+  --two-color: #638C6D;
+  --tree-color: #E7FBB4;
+  --four-color: #C84C05;
+}
+
 /* Reset */
 body, h1, h2, p, ul, li, a {
   margin: 0;
@@ -66,11 +79,12 @@ body {
   position: fixed;
   top: 0;
   right: -250px;
-  width: 250px;
+  width: 150px;
   height: 100%;
   background-color: rgba(2, 89, 16, 0.95);
   padding-top: 60px;
   transition: transform 0.3s ease-in-out;
+  z-index: 2;
 }
 
 .nav-container2.active {
@@ -91,7 +105,7 @@ body {
   content: "";
   position: absolute;
   bottom: 15px;
-  left: 50%; /* Mulai dari tengah */
+  left: 50%;
   width: 0;
   height: 2px;
   background-color: white;
@@ -100,7 +114,7 @@ body {
 }
 
 .nav-link:hover::after {
-  width: 100%; /* Garis melebar ke seluruh link */
+  width: 100%; 
 }
 
 /*header*/
@@ -196,6 +210,12 @@ header p {
   font-weight: bold;
 }
 
+#welcome h3{
+  padding-top: 30px;
+  color: var(--four-color);
+  text-align: center;
+}
+
 .underline {
   width: 400px;
   height: 3px;
@@ -211,7 +231,7 @@ header p {
 }
 
 .name-container {
-  padding-top: 50px;
+  padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
   gap: 20px;
@@ -247,7 +267,7 @@ header p {
 }
 
 #products h2 {
-    color: #8b4f21;
+    color: #d84a05;
     margin-bottom: 20px;
 }
 
@@ -325,28 +345,13 @@ header p {
     background-color: #fff;
     padding: 40px;
     text-align: center;
-    /* Styling untuk Section News */
-}
-
-.underline1 {
-  width: 1000px;
-  height: 3px;
-  background-color: black;
-  border: none;
-  align-items: center;
-}
-
-#news {
-    background-color: #fff;
-    padding: 40px;
-    text-align: center;
     overflow: hidden;
     position: relative;
 }
 
 /* Judul */
 .news-title {
-    color: #b5501a;
+    color: #d84a05;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -387,7 +392,7 @@ header p {
 /* Layout hero image dan teks */
 .news-content {
     display: flex;
-    background-color: #e5f4c3;
+    background-color: #b8c8b8;
     padding: 40px;
     width: 100%;
     max-width: 1100px;
@@ -488,11 +493,11 @@ header p {
 .contact-header h2 {
   font-size: 18px;
   margin-bottom: 5px;
-  color: rgb(175, 70, 70);
+  color: var(--four-color);
 }
 
 .contact-header .company-name {
-  color: #b52b19;
+  color: var(--four-color);
   font-size: 24px;
   font-weight: bold;
 }
@@ -509,6 +514,10 @@ header p {
 .contact-info {
   flex: 1;
   padding-right: 20px;
+  text-align: left; /* Pastikan teks rata kiri */
+  display: flex;
+  flex-direction: column; /* Agar elemen berurutan ke bawah */
+  align-items: flex-start; /* Pastikan semua elemen rata kiri */
 }
 
 /* Styling Ikon Kontak */
@@ -589,19 +598,141 @@ footer {
   .nav-link {
       padding: 10px;
   }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    transform: translateX(-50%);
+  }
+  .nav-link:hover::after {
+    width: 80%; 
+  }
   .menu-bar{
     display: block;
   }
+  /* About */
+  #welcome p {
+    font-size: 0.8rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  /* Product */
+  #products {
+    padding: 40px 10px 40px 10px;
+  }
+  #products h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .carausel-container {
+    width: 100%;
+  }
+  .carousel img {
+    width: 120px;
+    height: 120px;
+    margin: 0 10px;
+  }
+  .prev-btn, .next-btn {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    z-index: 10;
+  }
+  /* News */
+  .underline1 {
+    width: 350px;
+    height: 3px;
+  }
+  .news{
+    padding: 20px 0px 20px 0px;
+  }
+  .news-title {
+    color: #b5501a;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .news-content {
+    padding: 20px 0 20px 0;
+  }
+  .hero-image{
+    justify-content: unset;
+    padding : 0 10px 0 10px;
+  }
+  .image-placeholder {
+    width: 120px;
+    height: 120px;
+    font-size: 10px;
+  }
+  .news-content {
+    max-width: 300px;
+  }
+  .news-text {
+    flex: 2;
+    padding-left: 5px;
+    text-align: left;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8;
+    border-left: 3px solid black;
+  }
+  .carousel-nav {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .dot{
+    height: 12px;
+    width: 12px;
+  }
+  .more-btn {
+    margin-top: 10px;
+    margin-left: 25px;
+    background-color: #6a9f5a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  /* Contact */
   .contact{
     padding: 0 50px 50px 50px;
+  }
+  .contact-header h2 {
+    font-size: 1.1rem;
+  }
+  .contact-header .company-name {
+    font-size: 1.2rem;
+  }
+  .contact-info {
+    flex: 1;
+    padding-right: 10px;
+  }
+  .contact-icons i {
+    font-size: 0.8rem;
+    margin-right: 10px;
+  }
+  .divider{
+    border-left: 2px solid black;
+    padding-right: 10px;
+  }
+
+
+  footer{
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 920px) {
-  .nav-container {
-      flex-direction: column;
-      gap: 10px;
-  }
   .nav-link {
       padding: 10px;
   }
@@ -659,22 +790,12 @@ footer {
     font-weight: bold;
     margin-bottom: 10px;
   }
-
   header p {
     font-size: 0.8rem;
     max-width: 700px;
     margin: 0 auto;
     z-index: 1;
   }
-
-  .nav-container {
-      flex-direction: column;
-      gap: 10px;
-  }
-  .nav-link {
-      padding: 10px;
-  }
-
   .contact{
     padding: 0 20px 50px 20px;
   }
