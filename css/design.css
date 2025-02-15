@@ -241,7 +241,7 @@ header p {
 .box-name {
   width: 150px;
   height: 200px;
-  background-color: lightgray;
+  background-color: var(--tree-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -733,6 +733,13 @@ footer {
 }
 
 @media (max-width: 920px) {
+  #navbar{
+    padding: 0 30px;
+  }
+  .logo-img {
+    width: 45px;
+    height: auto;
+  }
   .nav-link {
       padding: 10px;
   }
@@ -765,7 +772,7 @@ footer {
     margin: 10px 0;
     border: none;
   }
-  .image-container {
+  .name-container {
     padding-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
@@ -775,7 +782,7 @@ footer {
   .box-name {
     width: 100px;
     height: 50px;
-    background-color: lightgray;
+    /* background-color: lightgray; */
     display: flex;
     align-items: center;
     justify-content: center;
