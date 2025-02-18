@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Berita - User</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .news-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .news-item { display: flex; width: 100%; border: 1px solid #ccc; padding: 10px; }
+        .news-item img { width: 150px; height: 100px; object-fit: cover; }
+        .news-content { flex: 1; padding-left: 10px; }
+        .news-title { font-weight: bold; }
+        .news-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid black; }
+    </style>
+</head>
+<body>
+    <h1>Portal Berita</h1>
+    <div class="news-container" id="news-container"></div>
+
+    <div class="news-popup" id="news-popup">
+        <h2 id="popup-title"></h2>
+        <img id="popup-image" src="" width="100%">
+        <p id="popup-content"></p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+
+    <script>
+        function loadNews() {
+            fetch('./data/SimpanBerita.txt')
+                .then(response => response.text())
+                .then(data => {
+                    const newsContainer = document.getElementById('news-container');
+                    newsContainer.innerHTML = '';
+                    const newsEntries = data.trim().split('\n');
+                    newsEntries.forEach(entry => {
+                        const [id, title, content, image] = entry.split('|');
+                        const newsItem = document.createElement('div');
+                        newsItem.className = 'news-item';
+                        newsItem.innerHTML = `
+                            <img src="./asset/savefotoberita/${image}" alt="Gambar">
+                            <div class="news-content">
+                                <div class="news-title">${title}</div>
+                                <div class="news-text">${content.substring(0, 50)}...</div>
+                                <button onclick="openPopup('${id}')">Baca Selengkapnya</button>
+                            </div>
+                        `;
+                        newsContainer.appendChild(newsItem);
+                    });
+                })
+                .catch(() => console.error('File berita tidak ditemukan.'));
+        }
+
+        function openPopup(id) {
+            fetch('./data/SimpanBerita.txt')
+                .then(response => response.text())
+                .then(data => {
+                    const newsEntries = data.trim().split('\n');
+                    const news = newsEntries.find(entry => entry.startsWith(id + '|'));
+                    if (news) {
+                        const [_, title, content, image] = news.split('|');
+                        document.getElementById('popup-title').innerText = title;
+                        document.getElementById('popup-image').src = `./asset/savefotoberita/${image}`;
+                        document.getElementById('popup-content').innerText = content;
+                        document.getElementById('news-popup').style.display = 'block';
+                    }
+                });
+        }
+
+        function closePopup() {
+            document.getElementById('news-popup').style.display = 'none';
+        }
+
+        window.onload = loadNews;
+    </script>
+</body>
+</html>

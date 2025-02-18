@@ -1,124 +1,95 @@
-<!-- HTML dengan Navbar Responsif (Semua dalam satu file) -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Navbar</title>
-  <style>
-/* Reset default */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Navbar Styling */
-    #navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(2, 89, 16, 1);
-      z-index: 1000;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
-      padding: 0 50px;
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .logo-img {
-      width: 50px;
-      height: auto;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .menu-bar {
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      display: none;
-    }
-
-    /* Menu Sidebar */
-    .nav-container2 {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: rgba(2, 89, 16, 0.95);
-      padding-top: 60px;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .nav-container2.active {
-      transform: translateX(-250px);
-    }
-
-    .nav-link {
-      color: white;
-      padding: 20px 10px;
-      font-size: 16px;
-      position: relative;
-      transition: background-color 0.3s ease;
-      display: block;
-      text-decoration: none;
-    }
-
-    .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    @media (max-width: 1080px) {
-      .nav-container {
-          display: none;
-      }
-      .menu-bar {
-          display: block;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Berita</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .news-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .news-item { display: flex; width: 100%; border: 1px solid #ccc; padding: 10px; }
+        .news-item img { width: 150px; height: 100px; object-fit: cover; }
+        .news-content { flex: 1; padding-left: 10px; }
+        .news-title { font-weight: bold; }
+        .news-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid black; }
+        .admin-panel { margin-top: 20px; }
+    </style>
 </head>
 <body>
-  <nav id="navbar">
-    <div class="logo">
-      <img src="./asset/logo/logo.webp" alt="Logo">
+    <h1>Portal Berita</h1>
+    
+    <div class="news-container" id="news-container"></div>
+    
+    <div class="admin-panel">
+        <h2>Admin Panel</h2>
+        <input type="text" id="title" placeholder="Judul Berita"><br>
+        <textarea id="content" placeholder="Isi Berita"></textarea><br>
+        <input type="file" id="imageFile" accept="image/*"><br>
+        <button onclick="addNews()">Tambahkan Berita</button>
     </div>
-    <div class="nav-container">
-      <a href="#welcome" class="nav-link">Tentang Kami</a>
-      <a href="#products" class="nav-link">Produksi</a>
-      <a href="#news" class="nav-link">Berita</a>
-      <a href="#contact" class="nav-link">Kontak</a>
+
+    <div class="news-popup" id="news-popup">
+        <h2 id="popup-title"></h2>
+        <img id="popup-image" src="" width="100%">
+        <p id="popup-content"></p>
+        <button onclick="closePopup()">Tutup</button>
     </div>
-    <div class="menu-bar">☰</div>
-  </nav>
 
-  <div class="nav-container2">
-    <a href="#welcome" class="nav-link">Tentang Kami</a>
-    <a href="#products" class="nav-link">Produksi</a>
-    <a href="#news" class="nav-link">Berita</a>
-    <a href="#contact" class="nav-link">Kontak</a>
-  </div>
+    <script>
+        function loadNews() {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = '';
+            const newsData = JSON.parse(localStorage.getItem('news')) || [];
+            newsData.forEach((news, index) => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item';
+                newsItem.innerHTML = `
+                    <img src="./asset/savefotoberita/${news.image}" alt="Gambar">
+                    <div class="news-content">
+                        <div class="news-title">${news.title}</div>
+                        <div class="news-text">${news.content.substring(0, 50)}...</div>
+                        <button onclick="openPopup(${index})">Baca Selengkapnya</button>
+                    </div>
+                `;
+                newsContainer.appendChild(newsItem);
+            });
+        }
 
-  <script>
-    const menuBar = document.querySelector('.menu-bar');
-    const navContainer = document.querySelector('.nav-container');
-    menuBar.addEventListener('click', () => {
-      navContainer.classList.toggle('active');
-    });
-  </script>
+        function addNews() {
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const imageFile = document.getElementById('imageFile').files[0];
+            if (title && content && imageFile) {
+                const imageName = new Date().getTime() + '-' + imageFile.name;
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    localStorage.setItem(`image-${imageName}`, event.target.result);
+                    saveNews(title, content, imageName);
+                };
+                reader.readAsDataURL(imageFile);
+            }
+        }
+
+        function saveNews(title, content, imageName) {
+            const newsData = JSON.parse(localStorage.getItem('news')) || [];
+            newsData.push({ title, content, image: imageName });
+            localStorage.setItem('news', JSON.stringify(newsData));
+            loadNews();
+        }
+
+        function openPopup(index) {
+            const newsData = JSON.parse(localStorage.getItem('news'));
+            document.getElementById('popup-title').innerText = newsData[index].title;
+            document.getElementById('popup-image').src = `./asset/savefotoberita/${newsData[index].image}`;
+            document.getElementById('popup-content').innerText = newsData[index].content;
+            document.getElementById('news-popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('news-popup').style.display = 'none';
+        }
+
+        window.onload = loadNews;
+    </script>
 </body>
 </html>
