@@ -9,10 +9,10 @@ html {
 }
 
 :root {
-  --one-color: rgba(2, 89, 16, 1);
-  --two-color: #638C6D;
-  --tree-color: #E7FBB4;
-  --four-color: #C84C05;
+  --one-color: #347928;
+  --two-color: #8EB486;
+  --tree-color: #FDF7F4;
+  --four-color: #914F1E;
 }
 
 /* Reset */
