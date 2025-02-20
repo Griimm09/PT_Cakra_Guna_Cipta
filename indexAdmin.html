@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Berita - Admin</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .admin-panel { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel - Tambah Berita</h1>
+    <div class="admin-panel">
+        <input type="text" id="title" placeholder="Judul Berita"><br>
+        <textarea id="content" placeholder="Isi Berita"></textarea><br>
+        <input type="file" id="imageFile" accept="image/*"><br>
+        <button onclick="addNews()">Tambahkan Berita</button>
+    </div>
+
+    <script>
+        function addNews() {
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const imageFile = document.getElementById('imageFile').files[0];
+            if (title && content && imageFile) {
+                const id = new Date().getTime();
+                const imageName = `${id}-${imageFile.name}`;
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    localStorage.setItem(`image-${imageName}`, event.target.result);
+                    saveNews(id, title, content, imageName);
+                };
+                reader.readAsDataURL(imageFile);
+            }
+        }
+
+        function saveNews(id, title, content, imageName) {
+            const newsEntry = `id:${id}{\n  judul:${title}\n  text:${content}\n  berita:./asset/savefotoberita/${imageName}\n}\n`;
+            let newsData = localStorage.getItem('newsTxt') || '';
+            newsData += newsEntry;
+            localStorage.setItem('newsTxt', newsData);
+
+            const filePath = './data/SimpanBerita.txt';
+            fetch('/save-news', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filePath, data: newsEntry })
+            });
+            alert('Berita berhasil ditambahkan!');
+        }
+    </script>
+</body>
+</html>
