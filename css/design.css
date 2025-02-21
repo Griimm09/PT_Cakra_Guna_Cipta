@@ -7,10 +7,10 @@ html {
   box-sizing: border-box;
 }
 :root {
-  --one-color: rgba(2, 89, 16, 1);
-  --two-color: #638C6D;
-  --tree-color: #E7FBB4;
-  --four-color: #C84C05;
+  --one-color: #347928;
+  --two-color: #8EB486;
+  --tree-color: #FDF7F4;
+  --four-color: #914F1E;
 }
 body, h1, h2, p, ul, li, a {
   margin: 0;
@@ -263,6 +263,35 @@ header p {
 .prev-btn:hover, .next-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+.category {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.process-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.process-step {
+  width: 200px;
+}
+
+.process-step img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.process-step img:hover {
+  transform: scale(1.05);
+}
+
 
 /* Styling untuk Section News */
 .underline1 {
