@@ -222,7 +222,7 @@ footer {
     object-fit: cover;
   }
   .underline {
-    width: 250px;
+    width: 100%;
     height: 1.5px;
     background-color: black;
     border: none;
