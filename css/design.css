@@ -127,22 +127,27 @@ header::before {
   filter: blur(2px) brightness(60%); 
   z-index: -1;
 }
-.header-container{
-  background-color: rgba(105, 105, 105, 0.4);
-  padding: 150px 130px 150px 130px;
+.header-container {
+  background: rgba(253, 247, 244, 0.7); /* Coklat dengan transparansi 40% */
+  backdrop-filter: blur(5px); /* Efek blur kaca */
+  -webkit-backdrop-filter: blur(10px);
+  padding: 150px 130px;
   border-radius: 5%;
+  border: 1px solid rgba(253, 247, 244, 0.4); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)/* Border agar lebih elegan */
 }
+
 header h1 {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--one-color);
 }
 header h2 {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #fff;
+  color: var(--four-color);
 }
 .visi-misi-container {
   display: flex;
@@ -165,6 +170,7 @@ header h1 {
 }
 header p {
   font-size: 1.2rem;
+  color: black;
   max-width: 800px;
   margin: 0 auto;
   z-index: 1;
@@ -178,8 +184,7 @@ header p {
   padding: 20px;
 }
 #welcome h2 {
-  color: #d84a05;
-  font-size: 1.5rem;
+  color: var(--one-color);
   font-weight: bold;
 }
 #welcome h3{
@@ -202,12 +207,12 @@ header p {
 
 /* Styling product */
 #products {
-    background-color: #b8c8b8;
+    background-color: var(--two-color);
     padding: 40px;
     text-align: center;
 }
 #products h2 {
-    color: #d84a05;
+    color: var(--four-color);
     margin-bottom: 20px;
 }
 .carousel-container {
@@ -260,8 +265,9 @@ header p {
 }
 
 /* Styling untuk Section Process Production */
-#process{
+#process h2{
   text-align: center;
+  color: var(--one-color);
 }
 .underline3 {
   width: 800px;
@@ -313,8 +319,8 @@ header p {
     position: relative;
 }
 .news-title {
-    color: #d84a05;
-    font-size: 24px;
+    color: var(--four-color);
+    /* font-size: 24px; */
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -451,7 +457,7 @@ header p {
   flex-direction: column;
   padding: 0 400px 0 400px;
   max-width: 100%;
-  background-color: rgba(187, 59, 59, 0.1);
+  background-color: var(--tree-color);
   /* background-position: center; */
   /* padding: 20px; */
   border-radius: 10px;
@@ -467,7 +473,7 @@ header p {
   color: var(--four-color);
 }
 .contact-header .company-name {
-  color: var(--four-color);
+  color: var(--one-color);
   font-size: 24px;
   font-weight: bold;
 }
