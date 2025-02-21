@@ -264,11 +264,23 @@ header p {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Styling untuk Section Process Production */
+#process{
+  text-align: center;
+}
+.underline3 {
+  width: 800px;
+  height: 3px;
+  background-color: black;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border: none;
+  display: block;
+}
 .category {
   margin-bottom: 30px;
   text-align: center;
 }
-
 .process-container {
   display: flex;
   justify-content: center;
@@ -276,18 +288,15 @@ header p {
   gap: 15px;
   margin-top: 15px;
 }
-
 .process-step {
   width: 200px;
 }
-
 .process-step img {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
 }
-
 .process-step img:hover {
   transform: scale(1.05);
 }
@@ -524,7 +533,7 @@ section {
 }
 h2 {
   font-size: 2rem;
-  color: #025910;
+  color: var(--four-color);
   margin-bottom: 20px;
 }
 section p {
@@ -576,8 +585,8 @@ footer {
     font-size: 1.2rem;
     margin-bottom: 20px;
   }
-  .carausel-container {
-    width: 100%;
+  .carousel-container {
+    width: 80%;
   }
   .carousel img {
     width: 120px;
@@ -755,15 +764,37 @@ footer {
     margin: 0 auto;
     z-index: 1;
   }
-  .underline1 {
-    width: 100%; /* Lebar penuh agar horizontal */
+  .underline3 {
+    width: 90%;
     height: 3px;
     background-color: black;
-    margin: 10px auto; /* Beri jarak di atas */
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: none;
+    display: block;
+  }
+  #process h2{
+    font-size: 1.2rem;
+  }
+  #process h3{
+    font-size: 1rem;
+  }
+  #process p{
+    font-size: 0.8rem;
+  }
+  .process-step {
+    width: 150px;
+  }
+
+  .underline1 {
+    width: 100%; 
+    height: 3px;
+    background-color: black;
+    margin: 10px auto; 
   }
   .news-content {
-      flex-direction: column; /* Susun elemen secara vertikal */
-      align-items: center; /* Pusatkan isi */
+    flex-direction: column; 
+    align-items: center; 
   }
   .hero-image {
       order: -1;
