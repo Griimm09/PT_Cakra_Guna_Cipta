@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const menuBar = document.querySelector('.menu-bar');
+    const menuBar = document.getElementById("menu-bar");
     const navContainer = document.querySelector('.nav-container2');
 
     menuBar.addEventListener('click', () => {
